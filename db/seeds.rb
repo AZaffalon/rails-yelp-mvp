@@ -5,10 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts 'Cleaning database...'
+Restaurant.destroy_all
+
 puts "Creating Restaurants..."
-leon = { name: "léon de bruxelle", address: "Plaisir", phone_number: "666", category: "fruit de mer" }
-mcdo = { name: 'mcdo', address: 'Saint-brice', phone_number: '777', category: 'fast-food' }
-buffalo = { name: 'buffalo grill', address: 'Moisselles', phone_number: '888', category: 'steakhouse' }
-iresto = { name: 'iresto', address: 'Ecouen', phone_number: '999', category: 'fast-food' }
-ritz = { name: 'ritz', address: 'Paris', phone_number: '111', category: 'gastronomie' }
-puts "Finished!"
+leon = { name: "Léon de bruxelle", address: "Plaisir", phone_number: 666, category: 'belgian' }
+mcdo = { name: "Mcdonald\'s", address: 'Saint-brice', phone_number: 777, category: 'french' }
+buffalo = { name: 'Buffalo grill', address: 'Moisselles', phone_number: 888, category: 'italian' }
+iresto = { name: 'Iresto', address: 'Ecouen', phone_number: 999, category: 'chinese' }
+ritz = { name: 'Ritz', address: 'Paris', phone_number: 111, category: 'french' }
+
+[leon, mcdo, buffalo, iresto, ritz].each do |attributes|
+  restaurant = Restaurant.create!(attributes)
+  puts "Created #{restaurant.name}"
+end
+puts 'Finished!'
